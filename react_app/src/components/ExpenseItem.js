@@ -1,17 +1,20 @@
 import React from 'react';
 import './ExpenseItem.css'
+import ExpenseDate from "./ExpenseDate";
+import Card from "./Card";
 
-const ExpenseItem = ({day, title, price}) => {
+const ExpenseItem = ({date, title, price}) => {
 
 
     return (
-        <div className='expense-item'>
-            <div>{day} </div>
+        <Card className='expense-item'>
+
+            <ExpenseDate date={date}/>
             <div className='expense-item__description'>
                 <h2>{title}</h2>
                 <div className='expense-item__price'>{price}$</div>
             </div>
-        </div>
+        </Card>
 
     );
 };

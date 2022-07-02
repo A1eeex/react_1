@@ -1,34 +1,31 @@
-import ExpenseItem from "./components/ExpenseItem";
+import Expenses from "./components/Expenses";
 
 function App() {
-
     const expenses = [
         {
             id: 1,
             title: 'Tortila',
             amount: 213.212,
-            date:  new Date().toISOString()
+            date: new Date()
         },
         {
             id: 2,
             title: 'Soda',
             amount: 213.212,
-            date:  new Date(5,3,12).toISOString()
+            date: new Date(2025, 3, 12)
         },
         {
             id: 3,
             title: 'Pasta',
             amount: 213.212,
-            date: new Date(2,5,23).toISOString()
+            date: new Date(52, 5, 23)
         }
     ]
+
     return (
         <div>
-            <div>yoAPP</div>
-            <ExpenseItem title={expenses[0].title} day={expenses[0].date} price={expenses[0].amount}/>
-            <ExpenseItem title={expenses[1].title} day={expenses[1].date} price={expenses[1].amount}/>
-            <ExpenseItem title={expenses[2].title} day={expenses[2].date} price={expenses[2].amount}/>
-
+            <h1>yo-APP</h1>
+            <Expenses expenses={expenses} />
         </div>
 
     );
