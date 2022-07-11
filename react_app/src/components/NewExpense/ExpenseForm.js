@@ -21,17 +21,26 @@ const ExpenseForm = () => {
         })
     }
     const amountChangeHandler = (e) => {
-        setUserInp((prevState)=>{
+        setUserInp((prevState) => {
             return {...prevState, amount: e.target.value}
         })
     }
     const dateChangeHandler = (e) => {
-        setUserInp((prevState)=>{
+        setUserInp((prevState) => {
             return {...prevState, date: e.target.value}
         })
     }
+    const submitHandler = (e) => {
+        e.preventDefault();
+        console.log(userInp)
+        setUserInp({
+            title: '',
+            amount: '',
+            date: '',
+        })
+    }
     return (
-        <form>
+        <form onSubmit={submitHandler}>
             <div className='new-expense__controls'>
                 <div className='new-expense__control'>
                     <label> Title</label>
