@@ -12,21 +12,22 @@ const ExpenseForm = () => {
         date: '',
     })
     const titleChangeHandler = (e) => {
-        setUserInp({
-            ...userInp,
-            title: e.target.value
+        // setUserInp({
+        //     ...userInp,
+        //     title: e.target.value
+        // })
+        setUserInp((prevState) => {
+            return {...prevState, title: e.target.value};
         })
     }
     const amountChangeHandler = (e) => {
-      setUserInp({
-          ...userInp,
-          amount: e.target.value
-      })
+        setUserInp((prevState)=>{
+            return {...prevState, amount: e.target.value}
+        })
     }
     const dateChangeHandler = (e) => {
-        setUserInp({
-            ...userInp,
-            date: e.target.value
+        setUserInp((prevState)=>{
+            return {...prevState, date: e.target.value}
         })
     }
     return (
@@ -44,7 +45,8 @@ const ExpenseForm = () => {
 
                 <div className='new-expense__control'>
                     <label> Date</label>
-                    <input type='date' min='2019-01-01' max='2022-12-31' onChange={dateChangeHandler} value={userInp.date}/>
+                    <input type='date' min='2019-01-01' max='2022-12-31' onChange={dateChangeHandler}
+                           value={userInp.date}/>
                 </div>
 
                 <div className='new-expense__actions'>
