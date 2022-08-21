@@ -1,16 +1,31 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ExpenseItem from "./ExpenseItem";
 import './Expenses.css'
+import ExpensesFilter from "./ExpensesFilter";
 
 const Expenses = ({expenses}) => {
+    const [selectedValueFilter, setSelectedValueFilter] = useState('2020')
+
+    const filterHandlerChange = (selectedValue) => {
+        setSelectedValueFilter(selectedValue)
+    }
+    const filteredExpenses = expenses.filter((item) => {
+        return item.date.getFullYear().toString() === selectedValueFilter
+
+    })
+    let expensesContent = <p>Nothing to find</p>;
+    if (filteredExpenses.length > 0) {
+        expensesContent = filteredExpenses.map((item) => (
+            <ExpenseItem key={item.id} title={item.title} date={item.date} price={item.amount}/>
+        ))
+    }
     return (
-        <div className='expenses'>
-            <ExpenseItem title={expenses[0].title} date={expenses[0].date} price={expenses[0].amount}/>
-            <ExpenseItem title={expenses[1].title} date={expenses[1].date} price={expenses[1].amount}/>
-            <ExpenseItem title={expenses[2].title} date={expenses[2].date} price={expenses[2].amount}/>
-
+        <div>
+            <div className='expenses'>
+                <ExpensesFilter selectValue={selectedValueFilter} changeFilter={filterHandlerChange}/>
+                {expensesContent}
+            </div>
         </div>
-
     );
 };
 
